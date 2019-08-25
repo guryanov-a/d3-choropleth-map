@@ -1,4 +1,4 @@
-import { GeoJSON } from 'geojson';
+import { GeoJSON, FeatureCollection } from 'geojson';
 
 export type IUsaState = 
   "AL"
@@ -71,8 +71,8 @@ export interface ICountyEducation {
 export type IEducation = Array<ICountyEducation>;
 
 export interface UsaGeopath {
-  countiesGeopath: GeoJSON;
-  statesGeopath: GeoJSON;
-  nationGeopath: GeoJSON;
+  countiesGeopath: FeatureCollection;
+  statesGeopath: FeatureCollection;
+  nationGeopath: FeatureCollection;
 };
 
