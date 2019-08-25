@@ -2206,9 +2206,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.191:
-  version "1.3.238"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.238.tgz#6d6496e393a709b7b186823281d49b1a5d96a6cf"
-  integrity sha512-k+s6EIiSTgfOm7WiMlGBMMMtBQXSui8OfLN1sXU3RohJOuLGVq0lVm7hXyDIDBcbPM0MeZabAdIPQOSEZT3ZLg==
+  version "1.3.239"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.239.tgz#94a1ac83bad33e9897c667152efccfe2df5d7716"
+  integrity sha512-fsLbvTg++Ui8VSWQhMwLwWT5tHD5Dlx0bYym6yeqIlH4kPrPjuiy2Pb6lUDgPJzd2ySjMcmcskcFBE2SqD2/HA==
 
 elliptic@^6.0.0:
   version "6.5.0"
@@ -3097,14 +3097,6 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-unfetch@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.0.0.tgz#de6d80abde487b17de2c400a7ef9e5ecc2efb362"
-  integrity sha512-V0tmJSYfkKokZ5mgl0cmfQMTb7MLHsBMngTkbLY0eXvKqiVRRoZP04Ly+KhKrJfKtzC9E6Pp15Jo+bwh7Vi2XQ==
-  dependencies:
-    node-fetch "^2.2.0"
-    unfetch "^4.0.0"
-
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -3253,6 +3245,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
+
+ky@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-0.12.0.tgz#c05be95e6745ba422a6d2cc8ae964164962279f9"
+  integrity sha512-t9b7v3V2fGwAcQnnDDQwKQGF55eWrf4pwi1RN08Fy8b/9GEwV7Ea0xQiaSW6ZbeghBHIwl8kgnla4vVo9seepQ==
 
 levn@~0.3.0:
   version "0.3.0"
@@ -3520,11 +3517,6 @@ node-addon-api@^1.6.0:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.7.1.tgz#cf813cd69bb8d9100f6bdca6755fc268f54ac492"
   integrity sha512-2+DuKodWvwRTrCfKOeR24KIc5unKjOh8mz17NCzVnHWfjAdDqbfbjqh7gUT+BkXBRQM52+xCHciKWonJ3CbJMQ==
-
-node-fetch@^2.2.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
 node-forge@^0.7.1:
   version "0.7.6"
@@ -5283,11 +5275,6 @@ uncss@^0.17.0:
     postcss "^7.0.16"
     postcss-selector-parser "6.0.2"
     request "^2.88.0"
-
-unfetch@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.1.0.tgz#6ec2dd0de887e58a4dee83a050ded80ffc4137db"
-  integrity sha512-crP/n3eAPUJxZXM9T80/yv0YhkTEx2K1D3h7D1AJM6fzsWZrxdyRuLN0JH/dkZh1LNH8LxCnBzoPFCPbb2iGpg==
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
