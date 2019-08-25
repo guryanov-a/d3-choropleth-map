@@ -1,16 +1,26 @@
-import { IEducationMap } from './types';
+import { feature as topoJsonToGeoJson } from 'topojson';
 
 import getEducationData from './api/getEducationData';
-import getCountyData from './api/getCountyData';
+import getCountiesTopology from './api/getCountiesTopology';
 
 import createChoroplethMap from './createChoroplethMap';
 
-async function initUsaEducationApp() {
-  const data: IEducationMap = await Promise.all([getEducationData(), getCountyData()]);
-  console.log(data[0]);
-  console.log(data[1]);
+async function initUsaEducationMap() {
+  const [countiesEducation, countiesTopology] = await Promise.all([getEducationData(), getCountiesTopology()]);
+  console.log('api data');
+  console.log(countiesEducation);
+  console.log(countiesTopology);
 
-  createChoroplethMap(data);
+  const usaGeopath = {
+    countiesGeopath: topoJsonToGeoJson(countiesTopology, countiesTopology.objects.counties),
+    statesGeopath: topoJsonToGeoJson(countiesTopology, countiesTopology.objects.states),
+    nationGeopath: topoJsonToGeoJson(countiesTopology, countiesTopology.objects.nation),
+  };
+  
+  console.log('geopath data');
+  console.log(usaGeopath);
+
+  createChoroplethMap(countiesEducation, usaGeopath);
 }
 
-export default initUsaEducationApp;
+export default initUsaEducationMap;

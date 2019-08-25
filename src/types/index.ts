@@ -1,3 +1,5 @@
+import { GeoJSON } from 'geojson';
+
 export type IUsaState = 
   "AL"
   | "AK"
@@ -68,40 +70,9 @@ export interface ICountyEducation {
 
 export type IEducation = Array<ICountyEducation>;
 
-export type IArc = Array<number>;
-
-export type IArcs = Array<IArc>;
-
-export type IBBox = [number, number, number, number];
-
-export interface IGeometry {
-  arcs: IArcs;
-  id: number;
-  type: string;
-}
-
-export interface IGeometryCollection {
-  geometries: Array<IGeometry>;
-  type: "GeometryCollection";
-}
-
-export interface ICountiesGeometry {
-  counties: IGeometryCollection;
-  nation: IGeometryCollection;
-  states: IGeometryCollection;
+export interface UsaGeopath {
+  countiesGeopath: GeoJSON;
+  statesGeopath: GeoJSON;
+  nationGeopath: GeoJSON;
 };
 
-export interface ITransform {
-  scale: Array<number>;
-  translate: Array<number>;
-}
-
-export interface ITopology {
-  arcs: Array<IArcs>;
-  bbox: IBBox;
-  objects: ICountiesGeometry;
-  transform: Object;
-  type: "Topology";
-}
-
-export type IEducationMap = [IEducation, ITopology];
