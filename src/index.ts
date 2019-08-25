@@ -1,3 +1,3 @@
-import initMap from './initMap';
+import initUsaEducationMap from './initUsaEducationMap';
 
-initMap();
+initUsaEducationMap();
