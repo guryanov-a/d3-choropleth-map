@@ -70,7 +70,7 @@ export interface ICountyEducation {
 
 export type IEducation = Array<ICountyEducation>;
 
-export interface UsaGeopath {
+export interface IUsaGeopath {
   countiesGeopath: FeatureCollection;
   statesGeopath: FeatureCollection;
   nationGeopath: FeatureCollection;

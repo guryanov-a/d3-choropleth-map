@@ -1,3 +1,3 @@
-import initUsaEducationMap from './initUsaEducationMap';
+import initUsaEducationMap from './choroplethMap/initUsaEducationMap';
 
 initUsaEducationMap();
