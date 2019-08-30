@@ -29,16 +29,24 @@ function createChoroplethMap() {
     .append(COUNTIES_SHAPE)
     .attr('d', d3.geoPath())
     .attr('fill', (d) => {
-      const currentEducation = usaEducationMapStore.countiesEducation.find((countryEducation) => countryEducation.fips === d.id)
-      return colorScale(currentEducation.bachelorsOrHigher);
+      const currentCounty = usaEducationMapStore.countiesEducation.find((countryEducation) => countryEducation.fips === d.id)
+      return colorScale(currentCounty.bachelorsOrHigher);
     })
     .attr('stroke', 'black')
     .attr('stroke-width', 0.2)
     .classed('county', true)
     .attr('data-fips', d => d.id)
     .attr('data-education', (d) => {
-      const currentCountyEducation = countiesEducation.find(countyEducation => countyEducation.fips === d.id);
-      return currentCountyEducation.bachelorsOrHigher;
+      const currentCounty = countiesEducation.find(countyEducation => countyEducation.fips === d.id);
+      return currentCounty.bachelorsOrHigher;
+    })
+    .attr('data-area-name', (d) => {
+      const currentCounty = countiesEducation.find(countyEducation => countyEducation.fips === d.id);
+      return currentCounty.area_name;
+    })
+    .attr('data-state', (d) => {
+      const currentCounty = countiesEducation.find(countyEducation => countyEducation.fips === d.id);
+      return currentCounty.state;
     });
 }
 

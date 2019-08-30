@@ -1,0 +1,13 @@
+.tooltip {
+  position: fixed;
+  width: 150px;
+  padding: 20px;
+  border: 1px solid black;
+  background: white;
+  display: none;
+  text-align: center;
+}
+
+.tooltip_visibility_visible {
+    display: block;
+}
