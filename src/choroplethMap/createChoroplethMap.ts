@@ -18,7 +18,7 @@ function createChoroplethMap() {
     .attr('width', usaEducationMapSizes.width)
     .attr('height', usaEducationMapSizes.height);
   
-  createLegend();
+  const { scales: { colorScale }} = createLegend();
 
   // create choropleth map
   const COUNTIES_SHAPE = 'path';
@@ -28,7 +28,10 @@ function createChoroplethMap() {
     .enter()
     .append(COUNTIES_SHAPE)
     .attr('d', d3.geoPath())
-    .attr('fill', 'green')
+    .attr('fill', (d) => {
+      const currentEducation = usaEducationMapStore.countiesEducation.find((countryEducation) => countryEducation.fips === d.id)
+      return colorScale(currentEducation.bachelorsOrHigher);
+    })
     .attr('stroke', 'black')
     .attr('stroke-width', 0.2)
     .classed('county', true)

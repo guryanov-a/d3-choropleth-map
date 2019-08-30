@@ -1,15 +1,17 @@
 import * as d3 from 'd3';
 
-import usaEducationMapStore from '../stores/UsaEducationMapStore';
-
 const sizes = {
   width: 400,
   height: 110,
   padding: 60,
 };
 
-function createEducationRangeScales() {
-  const { countiesEducation } = usaEducationMapStore;
+interface EducationRangeScales {
+  xScale: d3.ScaleLinear<number, number>;
+  colorScale: d3.ScaleLinear<number, number>;
+}
+
+function createEducationRangeScales(): EducationRangeScales {
   const { width, padding } = sizes;
   const minVariance = 0;
   const maxVariance = 100;
@@ -50,13 +52,11 @@ function createEducationRangeAxes(svg, { xScale }) {
 
 interface EducationRange {
   svg: any;
-  scales: any;
+  scales: EducationRangeScales;
   axes: any;
 }
 
 function createEducationRange(): EducationRange {
-  const { countiesEducation } = usaEducationMapStore;
-
   let svg = d3
     .select('#legend')
     .append('svg')
