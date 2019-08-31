@@ -1,9 +1,11 @@
 import * as d3 from 'd3';
+import usaEducationMapStore from '../stores/UsaEducationMapStore';
 
-const sizes = {
+const scaleSizes = {
   width: 400,
   height: 110,
   padding: 60,
+  parts: 4,
 };
 
 interface EducationRangeScales {
@@ -12,24 +14,30 @@ interface EducationRangeScales {
 }
 
 function createEducationRangeScales(): EducationRangeScales {
-  const { width, padding } = sizes;
-  const minVariance = 0;
-  const maxVariance = 100;
+  const { width } = scaleSizes;
+  const { countiesEducation } = usaEducationMapStore;
+  let minEducationLevel = d3.min(countiesEducation, (d) => d.bachelorsOrHigher);
+  let maxEducationLevel = d3.max(countiesEducation, (d) => d.bachelorsOrHigher);
   let xScale = d3
     .scaleLinear()
     .domain([
-      minVariance,
-      maxVariance,
+      minEducationLevel,
+      maxEducationLevel,
     ])
-    .range([padding, width - padding]);
+    .range([0, width]);
 
   let colorScale = d3
-    .scaleLinear()
+    .scaleQuantize()
     .domain([
-      minVariance,
-      maxVariance,
+      minEducationLevel,
+      maxEducationLevel,
     ])
-    .range(['rgb(229, 245, 224)', 'rgb(0, 68, 27)']);
+    .range([
+      'rgb(229, 245, 224)', 
+      'rgb(172, 201, 175)',
+      'rgb(115, 157, 126)',
+      'rgb(0, 68, 27)'
+    ]);
 
   return {
     xScale,
@@ -38,7 +46,7 @@ function createEducationRangeScales(): EducationRangeScales {
 }
 
 function createEducationRangeAxes(svg, { xScale }) {
-  const { height, padding } = sizes;
+  const { height, padding } = scaleSizes;
   let xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
 
   svg
@@ -60,16 +68,16 @@ function createEducationRange(): EducationRange {
   let svg = d3
     .select('#legend')
     .append('svg')
-    .attr('width', sizes.width)
-    .attr('height', sizes.height);
+    .attr('width', scaleSizes.width)
+    .attr('height', scaleSizes.height);
 
   let scales = createEducationRangeScales();
   let axes = createEducationRangeAxes(svg, scales);
 
-  let minEducationLevel = 0;
-  let maxEducationLevel = 100;
-  let educationLevelStep = (maxEducationLevel - minEducationLevel) / sizes.width;
-  let educationLevelRange = Array.from({length: sizes.width}).map((_, i) => minEducationLevel + i * educationLevelStep);
+  let minEducationLevel = d3.min(usaEducationMapStore.countiesEducation, (d) => d.bachelorsOrHigher);
+  let maxEducationLevel = d3.max(usaEducationMapStore.countiesEducation, (d) => d.bachelorsOrHigher);
+  let educationLevelStep = (maxEducationLevel - minEducationLevel) / scaleSizes.parts;
+  let educationLevelRange = Array.from({length: scaleSizes.parts}).map((_, i) => minEducationLevel + i * educationLevelStep);
 
   svg
     .selectAll('rect')
@@ -78,8 +86,8 @@ function createEducationRange(): EducationRange {
     .append('rect')
     .attr('x', (d) => scales.xScale(d))
     .attr('y', 0)
-    .attr('width', 5)
-    .attr('height', sizes.height - sizes.padding)
+    .attr('width', scaleSizes.width / scaleSizes.parts)
+    .attr('height', scaleSizes.height - scaleSizes.padding)
     .attr('fill', (d) => scales.colorScale(d));
 
   return {
